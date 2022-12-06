@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--LaunchVC-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController id="Y6W-OH-hqX" customClass="LaunchVC" customModule="PrettyBrowser" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pmM-ye-4Dd">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch_bg" translatesAutoresizingMaskIntoConstraints="NO" id="ITe-bi-5dL">
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch_icon" translatesAutoresizingMaskIntoConstraints="NO" id="0WA-Y1-dmC">
+                                <rect key="frame" x="35.666666666666657" y="123.66666666666669" width="319" height="397.00000000000006"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch_title" translatesAutoresizingMaskIntoConstraints="NO" id="Bre-Cl-urT">
+                                <rect key="frame" x="104.66666666666669" y="684" width="181" height="38"/>
+                            </imageView>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="KAd-GY-NGP">
+                                <rect key="frame" x="80" y="752" width="230" height="4"/>
+                            </progressView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ADX-Pa-huc"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="0WA-Y1-dmC" firstAttribute="centerY" secondItem="pmM-ye-4Dd" secondAttribute="centerY" constant="-100" id="8Di-IH-DvH"/>
+                            <constraint firstItem="ITe-bi-5dL" firstAttribute="top" secondItem="pmM-ye-4Dd" secondAttribute="top" id="Dli-sc-8LG"/>
+                            <constraint firstItem="ADX-Pa-huc" firstAttribute="bottom" secondItem="Bre-Cl-urT" secondAttribute="bottom" constant="88" id="HS1-3Y-1Xe"/>
+                            <constraint firstItem="KAd-GY-NGP" firstAttribute="leading" secondItem="ADX-Pa-huc" secondAttribute="leading" constant="80" id="Iny-tD-YBK"/>
+                            <constraint firstItem="0WA-Y1-dmC" firstAttribute="centerX" secondItem="pmM-ye-4Dd" secondAttribute="centerX" id="QOr-aZ-gVB"/>
+                            <constraint firstItem="ADX-Pa-huc" firstAttribute="trailing" secondItem="KAd-GY-NGP" secondAttribute="trailing" constant="80" id="iLY-N5-SwR"/>
+                            <constraint firstItem="Bre-Cl-urT" firstAttribute="centerX" secondItem="pmM-ye-4Dd" secondAttribute="centerX" id="kq9-62-vyK"/>
+                            <constraint firstAttribute="trailing" secondItem="ITe-bi-5dL" secondAttribute="trailing" id="luX-NH-FVu"/>
+                            <constraint firstItem="ITe-bi-5dL" firstAttribute="leading" secondItem="pmM-ye-4Dd" secondAttribute="leading" id="of3-DI-sJ2"/>
+                            <constraint firstItem="KAd-GY-NGP" firstAttribute="top" secondItem="Bre-Cl-urT" secondAttribute="bottom" constant="30" id="pAk-a6-PRC"/>
+                            <constraint firstAttribute="bottom" secondItem="ITe-bi-5dL" secondAttribute="bottom" id="pBY-4C-sOJ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="progressView" destination="KAd-GY-NGP" id="Zlw-GR-Ff7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="44" y="-2"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="launch_bg" width="360" height="760"/>
+        <image name="launch_icon" width="319" height="397"/>
+        <image name="launch_title" width="181" height="38"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
