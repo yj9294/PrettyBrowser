@@ -74,4 +74,14 @@ class SettingVC: BaseVC {
             UIApplication.shared.open(url)
         }
     }
+    
+    @IBAction func privacyAction() {
+        NotificationCenter.default.post(name: .homeWillDisappear, object: nil)
+        performSegue(withIdentifier: "toPrivacyVC", sender: nil)
+    }
+    
+    @IBAction func termsAction() {
+        NotificationCenter.default.post(name: .homeWillDisappear, object: nil)
+        performSegue(withIdentifier: "toTermsVC", sender: nil)
+    }
 }

@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C73E8200293EF92C00F33C2F /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = C73E81FF293EF92C00F33C2F /* FirebaseAnalytics */; };
+		C73E8202293EF92C00F33C2F /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = C73E8201293EF92C00F33C2F /* FirebaseCrashlytics */; };
+		C73E8204293EF92C00F33C2F /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = C73E8203293EF92C00F33C2F /* FirebaseRemoteConfig */; };
+		C73E8207293EF96600F33C2F /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = C73E8206293EF96600F33C2F /* GoogleMobileAds */; };
+		C73E8209293F043B00F33C2F /* GADUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73E8208293F043B00F33C2F /* GADUtil.swift */; };
+		C73E820B293F061F00F33C2F /* admob.json in Resources */ = {isa = PBXBuildFile; fileRef = C73E820A293F061F00F33C2F /* admob.json */; };
+		C73E820D293F10F100F33C2F /* NativeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73E820C293F10F100F33C2F /* NativeView.swift */; };
 		C74C87652935A10F0075577F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C74C875C2935A10F0075577F /* Assets.xcassets */; };
 		C74C87662935A10F0075577F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C74C875D2935A10F0075577F /* LaunchScreen.storyboard */; };
 		C74C87692935A10F0075577F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74C87632935A10F0075577F /* AppDelegate.swift */; };
@@ -32,15 +39,15 @@
 		C76F29132939E9E300B45B83 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = C76F29122939E9E300B45B83 /* Lottie */; };
 		C76F29152939F0AB00B45B83 /* FirebaseUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76F29142939F0AA00B45B83 /* FirebaseUtil.swift */; };
 		C76F29182939F2B100B45B83 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C76F29172939F2B100B45B83 /* GoogleService-Info.plist */; };
-		C76F291B2939F74000B45B83 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = C76F291A2939F74000B45B83 /* FirebaseAnalytics */; };
-		C76F291D2939F74000B45B83 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = C76F291C2939F74000B45B83 /* FirebaseCrashlytics */; };
-		C76F291F2939F74000B45B83 /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = C76F291E2939F74000B45B83 /* FirebaseRemoteConfig */; };
 		C76F29222939FB6B00B45B83 /* FacebookAEM in Frameworks */ = {isa = PBXBuildFile; productRef = C76F29212939FB6B00B45B83 /* FacebookAEM */; };
 		C76F29242939FB6B00B45B83 /* FacebookBasics in Frameworks */ = {isa = PBXBuildFile; productRef = C76F29232939FB6B00B45B83 /* FacebookBasics */; };
 		C76F29262939FB6B00B45B83 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = C76F29252939FB6B00B45B83 /* FacebookCore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C73E8208293F043B00F33C2F /* GADUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GADUtil.swift; sourceTree = "<group>"; };
+		C73E820A293F061F00F33C2F /* admob.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = admob.json; sourceTree = "<group>"; };
+		C73E820C293F10F100F33C2F /* NativeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeView.swift; sourceTree = "<group>"; };
 		C74C87442935A0950075577F /* PrettyBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PrettyBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C74C875C2935A10F0075577F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C74C875E2935A10F0075577F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -74,13 +81,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C76F291D2939F74000B45B83 /* FirebaseCrashlytics in Frameworks */,
 				C76F29222939FB6B00B45B83 /* FacebookAEM in Frameworks */,
 				C76F29262939FB6B00B45B83 /* FacebookCore in Frameworks */,
-				C76F291B2939F74000B45B83 /* FirebaseAnalytics in Frameworks */,
 				C76F29242939FB6B00B45B83 /* FacebookBasics in Frameworks */,
+				C73E8204293EF92C00F33C2F /* FirebaseRemoteConfig in Frameworks */,
+				C73E8207293EF96600F33C2F /* GoogleMobileAds in Frameworks */,
+				C73E8202293EF92C00F33C2F /* FirebaseCrashlytics in Frameworks */,
+				C73E8200293EF92C00F33C2F /* FirebaseAnalytics in Frameworks */,
 				C76F29132939E9E300B45B83 /* Lottie in Frameworks */,
-				C76F291F2939F74000B45B83 /* FirebaseRemoteConfig in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -118,6 +126,7 @@
 		C74C875B2935A10F0075577F /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				C73E820A293F061F00F33C2F /* admob.json */,
 				C76F290E2939E82300B45B83 /* data.json */,
 				C76F29172939F2B100B45B83 /* GoogleService-Info.plist */,
 				C74C875C2935A10F0075577F /* Assets.xcassets */,
@@ -158,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				C74C876D2935A3190075577F /* AppUtil.swift */,
+				C73E8208293F043B00F33C2F /* GADUtil.swift */,
 				C74C8779293701690075577F /* ViewUtil.swift */,
 				C74C877F29373AC10075577F /* BrowserUtil.swift */,
 				C76F29142939F0AA00B45B83 /* FirebaseUtil.swift */,
@@ -171,6 +181,7 @@
 				C74C877C293702F80075577F /* ProgressView.swift */,
 				C76F29092939DC8E00B45B83 /* CleanAlertView.swift */,
 				C76F290B2939DEA500B45B83 /* BaseView.swift */,
+				C73E820C293F10F100F33C2F /* NativeView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -193,12 +204,13 @@
 			name = PrettyBrowser;
 			packageProductDependencies = (
 				C76F29122939E9E300B45B83 /* Lottie */,
-				C76F291A2939F74000B45B83 /* FirebaseAnalytics */,
-				C76F291C2939F74000B45B83 /* FirebaseCrashlytics */,
-				C76F291E2939F74000B45B83 /* FirebaseRemoteConfig */,
 				C76F29212939FB6B00B45B83 /* FacebookAEM */,
 				C76F29232939FB6B00B45B83 /* FacebookBasics */,
 				C76F29252939FB6B00B45B83 /* FacebookCore */,
+				C73E81FF293EF92C00F33C2F /* FirebaseAnalytics */,
+				C73E8201293EF92C00F33C2F /* FirebaseCrashlytics */,
+				C73E8203293EF92C00F33C2F /* FirebaseRemoteConfig */,
+				C73E8206293EF96600F33C2F /* GoogleMobileAds */,
 			);
 			productName = PrettyBrowser;
 			productReference = C74C87442935A0950075577F /* PrettyBrowser.app */;
@@ -230,8 +242,9 @@
 			mainGroup = C74C873B2935A0950075577F;
 			packageReferences = (
 				C76F29112939E9E300B45B83 /* XCRemoteSwiftPackageReference "lottie-ios" */,
-				C76F29192939F74000B45B83 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				C76F29202939FB6B00B45B83 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
+				C73E81FE293EF92C00F33C2F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				C73E8205293EF96600F33C2F /* XCRemoteSwiftPackageReference "GoogleMobileAds" */,
 			);
 			productRefGroup = C74C87452935A0950075577F /* Products */;
 			projectDirPath = "";
@@ -252,6 +265,7 @@
 				C74C8782293744220075577F /* Main.storyboard in Resources */,
 				C74C87652935A10F0075577F /* Assets.xcassets in Resources */,
 				C74C87662935A10F0075577F /* LaunchScreen.storyboard in Resources */,
+				C73E820B293F061F00F33C2F /* admob.json in Resources */,
 				C74C87762935ADB60075577F /* Launch.storyboard in Resources */,
 				C76F29182939F2B100B45B83 /* GoogleService-Info.plist in Resources */,
 			);
@@ -264,6 +278,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C73E820D293F10F100F33C2F /* NativeView.swift in Sources */,
 				C76F29152939F0AB00B45B83 /* FirebaseUtil.swift in Sources */,
 				C74C8784293750E40075577F /* TabVC.swift in Sources */,
 				C76F29042939D75100B45B83 /* PrivacyVC.swift in Sources */,
@@ -280,6 +295,7 @@
 				C74C87722935A6AD0075577F /* BaseVC.swift in Sources */,
 				C76F29082939DB9100B45B83 /* CleanVC.swift in Sources */,
 				C74C878029373AC10075577F /* BrowserUtil.swift in Sources */,
+				C73E8209293F043B00F33C2F /* GADUtil.swift in Sources */,
 				C76F290C2939DEA500B45B83 /* BaseView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -506,17 +522,25 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		C73E81FE293EF92C00F33C2F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+		C73E8205293EF96600F33C2F /* XCRemoteSwiftPackageReference "GoogleMobileAds" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/quanghits/GoogleMobileAds";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
 		C76F29112939E9E300B45B83 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-ios";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
-		C76F29192939F74000B45B83 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
 			requirement = {
 				branch = master;
 				kind = branch;
@@ -533,25 +557,30 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		C73E81FF293EF92C00F33C2F /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C73E81FE293EF92C00F33C2F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		C73E8201293EF92C00F33C2F /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C73E81FE293EF92C00F33C2F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		C73E8203293EF92C00F33C2F /* FirebaseRemoteConfig */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C73E81FE293EF92C00F33C2F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseRemoteConfig;
+		};
+		C73E8206293EF96600F33C2F /* GoogleMobileAds */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C73E8205293EF96600F33C2F /* XCRemoteSwiftPackageReference "GoogleMobileAds" */;
+			productName = GoogleMobileAds;
+		};
 		C76F29122939E9E300B45B83 /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C76F29112939E9E300B45B83 /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
-		};
-		C76F291A2939F74000B45B83 /* FirebaseAnalytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C76F29192939F74000B45B83 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalytics;
-		};
-		C76F291C2939F74000B45B83 /* FirebaseCrashlytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C76F29192939F74000B45B83 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseCrashlytics;
-		};
-		C76F291E2939F74000B45B83 /* FirebaseRemoteConfig */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C76F29192939F74000B45B83 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseRemoteConfig;
 		};
 		C76F29212939FB6B00B45B83 /* FacebookAEM */ = {
 			isa = XCSwiftPackageProductDependency;
