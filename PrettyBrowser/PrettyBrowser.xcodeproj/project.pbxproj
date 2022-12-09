@@ -14,6 +14,7 @@
 		C73E8209293F043B00F33C2F /* GADUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73E8208293F043B00F33C2F /* GADUtil.swift */; };
 		C73E820B293F061F00F33C2F /* admob.json in Resources */ = {isa = PBXBuildFile; fileRef = C73E820A293F061F00F33C2F /* admob.json */; };
 		C73E820D293F10F100F33C2F /* NativeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73E820C293F10F100F33C2F /* NativeView.swift */; };
+		C73E82382942C86800F33C2F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C73E82372942C86800F33C2F /* GoogleService-Info.plist */; };
 		C74C87652935A10F0075577F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C74C875C2935A10F0075577F /* Assets.xcassets */; };
 		C74C87662935A10F0075577F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C74C875D2935A10F0075577F /* LaunchScreen.storyboard */; };
 		C74C87692935A10F0075577F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74C87632935A10F0075577F /* AppDelegate.swift */; };
@@ -38,7 +39,6 @@
 		C76F290F2939E82300B45B83 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = C76F290E2939E82300B45B83 /* data.json */; };
 		C76F29132939E9E300B45B83 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = C76F29122939E9E300B45B83 /* Lottie */; };
 		C76F29152939F0AB00B45B83 /* FirebaseUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76F29142939F0AA00B45B83 /* FirebaseUtil.swift */; };
-		C76F29182939F2B100B45B83 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C76F29172939F2B100B45B83 /* GoogleService-Info.plist */; };
 		C76F29222939FB6B00B45B83 /* FacebookAEM in Frameworks */ = {isa = PBXBuildFile; productRef = C76F29212939FB6B00B45B83 /* FacebookAEM */; };
 		C76F29242939FB6B00B45B83 /* FacebookBasics in Frameworks */ = {isa = PBXBuildFile; productRef = C76F29232939FB6B00B45B83 /* FacebookBasics */; };
 		C76F29262939FB6B00B45B83 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = C76F29252939FB6B00B45B83 /* FacebookCore */; };
@@ -48,6 +48,7 @@
 		C73E8208293F043B00F33C2F /* GADUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GADUtil.swift; sourceTree = "<group>"; };
 		C73E820A293F061F00F33C2F /* admob.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = admob.json; sourceTree = "<group>"; };
 		C73E820C293F10F100F33C2F /* NativeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeView.swift; sourceTree = "<group>"; };
+		C73E82372942C86800F33C2F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C74C87442935A0950075577F /* PrettyBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PrettyBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C74C875C2935A10F0075577F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C74C875E2935A10F0075577F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -73,7 +74,6 @@
 		C76F290B2939DEA500B45B83 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		C76F290E2939E82300B45B83 /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
 		C76F29142939F0AA00B45B83 /* FirebaseUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUtil.swift; sourceTree = "<group>"; };
-		C76F29172939F2B100B45B83 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,9 +126,9 @@
 		C74C875B2935A10F0075577F /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				C73E82372942C86800F33C2F /* GoogleService-Info.plist */,
 				C73E820A293F061F00F33C2F /* admob.json */,
 				C76F290E2939E82300B45B83 /* data.json */,
-				C76F29172939F2B100B45B83 /* GoogleService-Info.plist */,
 				C74C875C2935A10F0075577F /* Assets.xcassets */,
 				C74C875D2935A10F0075577F /* LaunchScreen.storyboard */,
 				C74C8781293744220075577F /* Main.storyboard */,
@@ -261,13 +261,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				C74C87782935ADBD0075577F /* Home.storyboard in Resources */,
+				C73E82382942C86800F33C2F /* GoogleService-Info.plist in Resources */,
 				C76F290F2939E82300B45B83 /* data.json in Resources */,
 				C74C8782293744220075577F /* Main.storyboard in Resources */,
 				C74C87652935A10F0075577F /* Assets.xcassets in Resources */,
 				C74C87662935A10F0075577F /* LaunchScreen.storyboard in Resources */,
 				C73E820B293F061F00F33C2F /* admob.json in Resources */,
 				C74C87762935ADB60075577F /* Launch.storyboard in Resources */,
-				C76F29182939F2B100B45B83 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,9 +433,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7HTJ8C6E28;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PrettyBrowser/Resource/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = PrettyBrowser;
@@ -452,8 +452,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.testbird.PrettyBrowser;
+				PRODUCT_BUNDLE_IDENTIFIER = com.browser.gopretty.boy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
@@ -468,9 +469,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7HTJ8C6E28;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PrettyBrowser/Resource/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = PrettyBrowser;
@@ -487,8 +488,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.testbird.PrettyBrowser;
+				PRODUCT_BUNDLE_IDENTIFIER = com.browser.gopretty.boy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
