@@ -9,18 +9,18 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb</string>
+				<string>fb863967767985296</string>
 			</array>
 		</dict>
 	</array>
 	<key>FacebookAdvertiserIDCollectionEnabled</key>
 	<true/>
 	<key>FacebookAppID</key>
-	<string></string>
+	<string>863967767985296</string>
 	<key>FacebookAutoLogAppEventsEnabled</key>
 	<true/>
 	<key>FacebookClientToken</key>
-	<string></string>
+	<string>1fd7e3b4791a76fca8808738593a0987</string>
 	<key>FacebookDisplayName</key>
 	<string>PrettyBrowser</string>
 	<key>GADNativeAdValidatorEnabled</key>

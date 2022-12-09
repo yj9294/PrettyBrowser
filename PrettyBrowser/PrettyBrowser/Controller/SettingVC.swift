@@ -57,7 +57,7 @@ class SettingVC: BaseVC {
 
         var url = "https://itunes.apple.com/cn/app/id"
         if !BrowseUtil.shared.item.isNavigation {
-            url = BrowseUtil.shared.item.webView.url?.absoluteString ?? "https://itunes.apple.com/cn/app/id"
+            url = BrowseUtil.shared.item.webView.url?.absoluteString ?? "https://itunes.apple.com/cn/app/id1658729096"
         }
         let vc = UIActivityViewController(activityItems: [url], applicationActivities: nil)
         vc.completionWithItemsHandler = { _, isCompletion, _, _ in
@@ -69,7 +69,7 @@ class SettingVC: BaseVC {
     
     @IBAction func rateAction() {
         self.dismiss(animated: true)
-        let url = URL(string: "https://itunes.apple.com/cn/app/id")
+        let url = URL(string: "https://itunes.apple.com/cn/app/id1658729096")
         if let url = url {
             UIApplication.shared.open(url)
         }
