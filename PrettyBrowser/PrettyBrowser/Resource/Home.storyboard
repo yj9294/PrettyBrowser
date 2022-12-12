@@ -1006,7 +1006,7 @@ Pretty Browserwelcomes your comments or questions regarding this Privacy Policy.
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tab_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="Lh4-LQ-1M4">
                                                     <rect key="frame" x="0.0" y="0.0" width="181" height="237"/>
                                                 </imageView>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qCH-bl-L2e">
+                                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qCH-bl-L2e">
                                                     <rect key="frame" x="0.0" y="0.0" width="181" height="237"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tab_web" translatesAutoresizingMaskIntoConstraints="NO" id="6u2-h2-q4p">
@@ -1089,6 +1089,7 @@ Pretty Browserwelcomes your comments or questions regarding this Privacy Policy.
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
+                                    <outlet property="dataSource" destination="bNM-FN-bvJ" id="0g4-XF-07W"/>
                                     <outlet property="delegate" destination="bNM-FN-bvJ" id="6fn-Wx-pjW"/>
                                 </connections>
                             </collectionView>

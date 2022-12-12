@@ -87,10 +87,12 @@ class TabCell: UICollectionViewCell {
     var item: BrowseItem? = nil {
         didSet {
             if let item = item {
-                self.webView.isHidden = false
-                self.urlLabel.text = item.webView.url?.absoluteString
-            } else {
-                self.webView.isHidden = true
+                if !item.isNavigation {
+                    self.webView.isHidden = false
+                    self.urlLabel.text = item.webView.url?.absoluteString
+                } else {
+                    self.webView.isHidden = true
+                }
             }
             
             closeButton.isHidden = BrowseUtil.shared.items.count == 1
