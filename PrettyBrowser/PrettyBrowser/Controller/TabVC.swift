@@ -74,6 +74,10 @@ class TabCell: UICollectionViewCell {
     
     @IBOutlet weak var closeButton: UIButton!
     
+    @IBOutlet weak var webView: UIView!
+    
+    @IBOutlet weak var urlLabel: UILabel!
+    
     var closeHandle: (()->Void)? = nil
     
     override func awakeFromNib() {
@@ -83,10 +87,10 @@ class TabCell: UICollectionViewCell {
     var item: BrowseItem? = nil {
         didSet {
             if let item = item {
-                self.addSubview(item.webView)
-                self.insertSubview(item.webView, belowSubview: closeButton)
-                item.webView.frame = self.bounds
-                item.webView.isUserInteractionEnabled = false
+                self.webView.isHidden = false
+                self.urlLabel.text = item.webView.url?.absoluteString
+            } else {
+                self.webView.isHidden = true
             }
             
             closeButton.isHidden = BrowseUtil.shared.items.count == 1

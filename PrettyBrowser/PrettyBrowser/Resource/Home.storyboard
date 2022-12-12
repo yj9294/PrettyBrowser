@@ -1006,8 +1006,50 @@ Pretty Browserwelcomes your comments or questions regarding this Privacy Policy.
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tab_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="Lh4-LQ-1M4">
                                                     <rect key="frame" x="0.0" y="0.0" width="181" height="237"/>
                                                 </imageView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qCH-bl-L2e">
+                                                    <rect key="frame" x="0.0" y="0.0" width="181" height="237"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tab_web" translatesAutoresizingMaskIntoConstraints="NO" id="6u2-h2-q4p">
+                                                            <rect key="frame" x="0.0" y="0.0" width="181" height="237"/>
+                                                        </imageView>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FFs-9Z-qOe">
+                                                            <rect key="frame" x="13" y="19" width="155" height="19"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J0Y-em-mud">
+                                                                    <rect key="frame" x="6" y="0.0" width="143" height="19"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="7"/>
+                                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="trailing" secondItem="J0Y-em-mud" secondAttribute="trailing" constant="6" id="2ga-4T-285"/>
+                                                                <constraint firstItem="J0Y-em-mud" firstAttribute="top" secondItem="FFs-9Z-qOe" secondAttribute="top" id="Rk0-nf-xcW"/>
+                                                                <constraint firstAttribute="bottom" secondItem="J0Y-em-mud" secondAttribute="bottom" id="U26-49-cwm"/>
+                                                                <constraint firstItem="J0Y-em-mud" firstAttribute="leading" secondItem="FFs-9Z-qOe" secondAttribute="leading" constant="6" id="lQx-tH-Fsx"/>
+                                                                <constraint firstAttribute="height" constant="19" id="y4g-QO-Xyc"/>
+                                                            </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                    <real key="value" value="4"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </view>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="FFs-9Z-qOe" secondAttribute="trailing" constant="13" id="2MG-Ko-cLa"/>
+                                                        <constraint firstItem="FFs-9Z-qOe" firstAttribute="leading" secondItem="qCH-bl-L2e" secondAttribute="leading" constant="13" id="4cK-dN-By9"/>
+                                                        <constraint firstAttribute="bottom" secondItem="6u2-h2-q4p" secondAttribute="bottom" id="IXC-Gd-58W"/>
+                                                        <constraint firstAttribute="trailing" secondItem="6u2-h2-q4p" secondAttribute="trailing" id="Y9Q-fN-rwJ"/>
+                                                        <constraint firstItem="6u2-h2-q4p" firstAttribute="leading" secondItem="qCH-bl-L2e" secondAttribute="leading" id="ahq-rA-gvN"/>
+                                                        <constraint firstItem="FFs-9Z-qOe" firstAttribute="top" secondItem="qCH-bl-L2e" secondAttribute="top" constant="19" id="fHF-1q-vTt"/>
+                                                        <constraint firstItem="6u2-h2-q4p" firstAttribute="top" secondItem="qCH-bl-L2e" secondAttribute="top" id="jGU-gF-3jV"/>
+                                                    </constraints>
+                                                </view>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s0n-G1-AVI">
-                                                    <rect key="frame" x="160" y="7" width="14" height="22"/>
+                                                    <rect key="frame" x="160" y="3" width="14" height="22"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="22" id="TJ1-2S-v6Z"/>
                                                         <constraint firstAttribute="width" constant="14" id="ZN2-aR-cDL"/>
@@ -1020,12 +1062,16 @@ Pretty Browserwelcomes your comments or questions regarding this Privacy Policy.
                                                 </button>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="qCH-bl-L2e" secondAttribute="trailing" id="8sb-Lb-2d5"/>
                                                 <constraint firstAttribute="trailing" secondItem="s0n-G1-AVI" secondAttribute="trailing" constant="7" id="AbH-9Y-zEF"/>
                                                 <constraint firstItem="Lh4-LQ-1M4" firstAttribute="leading" secondItem="oZS-US-mxW" secondAttribute="leading" id="ILP-lQ-UcO"/>
                                                 <constraint firstItem="Lh4-LQ-1M4" firstAttribute="top" secondItem="oZS-US-mxW" secondAttribute="top" id="VyS-Sc-VlK"/>
                                                 <constraint firstAttribute="bottom" secondItem="Lh4-LQ-1M4" secondAttribute="bottom" id="eNp-XG-CYj"/>
-                                                <constraint firstItem="s0n-G1-AVI" firstAttribute="top" secondItem="oZS-US-mxW" secondAttribute="top" constant="7" id="vbd-ub-avG"/>
+                                                <constraint firstAttribute="bottom" secondItem="qCH-bl-L2e" secondAttribute="bottom" id="fae-U1-EeH"/>
+                                                <constraint firstItem="qCH-bl-L2e" firstAttribute="top" secondItem="oZS-US-mxW" secondAttribute="top" id="gL6-LR-2Qr"/>
+                                                <constraint firstItem="s0n-G1-AVI" firstAttribute="top" secondItem="oZS-US-mxW" secondAttribute="top" constant="3" id="vbd-ub-avG"/>
                                                 <constraint firstAttribute="trailing" secondItem="Lh4-LQ-1M4" secondAttribute="trailing" id="xfM-VG-lyA"/>
+                                                <constraint firstItem="qCH-bl-L2e" firstAttribute="leading" secondItem="oZS-US-mxW" secondAttribute="leading" id="zT1-ja-LwJ"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="181" height="237"/>
@@ -1036,12 +1082,13 @@ Pretty Browserwelcomes your comments or questions regarding this Privacy Policy.
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <outlet property="closeButton" destination="s0n-G1-AVI" id="98g-8u-iE0"/>
+                                            <outlet property="urlLabel" destination="J0Y-em-mud" id="JUj-QC-RCc"/>
+                                            <outlet property="webView" destination="qCH-bl-L2e" id="XlD-Ca-eZX"/>
                                             <segue destination="HBf-8q-4jg" kind="unwind" unwindAction="getSegueWithSegue:" id="IgG-3G-pdI"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
-                                    <outlet property="dataSource" destination="bNM-FN-bvJ" id="aXu-dy-4o6"/>
                                     <outlet property="delegate" destination="bNM-FN-bvJ" id="6fn-Wx-pjW"/>
                                 </connections>
                             </collectionView>
@@ -1147,6 +1194,7 @@ Pretty Browserwelcomes your comments or questions regarding this terms of use</s
         <image name="tab_close" width="14" height="14"/>
         <image name="tab_new" width="32" height="32"/>
         <image name="tab_placeholder" width="154" height="222"/>
+        <image name="tab_web" width="154" height="222"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
