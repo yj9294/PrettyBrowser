@@ -9,9 +9,50 @@ import UIKit
 
 class TabVC: BaseVC {
     
+    @IBOutlet weak var adView: NativeView!
+    var willApear = false
+    var adImpressionDate: Date? {
+        GADUtil.share.tabNativeAdImpressionDate
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         FirebaseUtil.logEvent(name: .tabShow)
+        // ad loaded
+        NotificationCenter.default.addObserver(forName: .nativeUpdate, object: nil, queue: .main) { [weak self] noti in
+            
+            if GADUtil.share.isADLimited {
+                self?.adView.ad = nil
+                return
+            }
+            
+            // native ad is being display.
+            if let ad = noti.object as? NativeADModel, self?.willApear == true {
+                
+                // view controller impression ad date betwieen 10s to show ad
+                if Date().timeIntervalSince1970 - (self?.adImpressionDate ?? Date(timeIntervalSinceNow: -11)).timeIntervalSince1970 > 10 {
+                    self?.adView.ad = ad.nativeAd
+                    GADUtil.share.tabNativeAdImpressionDate =  Date()
+                } else {
+                    SLog("[ad] 10s tab 原生广告刷新或数据填充间隔.")
+                }
+            } else {
+                self?.adView.ad = nil
+            }
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        willApear = true
+        GADUtil.share.load(.interstitial)
+        GADUtil.share.load(.native)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        willApear = false
+        GADUtil.share.close(.native)
     }
     
     @IBAction func backAction() {
@@ -21,6 +62,7 @@ class TabVC: BaseVC {
     @IBAction func newAction() {
         BrowseUtil.shared.add()
         FirebaseUtil.logEvent(name: .tabNew, params: ["lig": "tab"])
+        self.dismiss(animated: true)
     }
     
     func delete(item: BrowseItem) {
@@ -29,6 +71,7 @@ class TabVC: BaseVC {
     
     func select(item: BrowseItem) {
         BrowseUtil.shared.select(item)
+        self.dismiss(animated: true)
     }
 }
 

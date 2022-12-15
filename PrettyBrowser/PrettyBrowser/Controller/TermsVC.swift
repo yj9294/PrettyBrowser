@@ -18,6 +18,7 @@ class TermsVC: BaseVC {
     }
     
     @objc func backAction() {
+        NotificationCenter.default.post(name: .homeWillappear, object: nil)
         self.dismiss(animated: true)
     }
 

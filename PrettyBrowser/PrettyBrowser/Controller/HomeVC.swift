@@ -33,16 +33,65 @@ class HomeVC: BaseVC {
     @IBOutlet weak var lastButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var contentView: UIView!
+    
+    @IBOutlet weak var adView: NativeView!
+    var willApear = false
+    var adImpressionDate: Date? = nil
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
         ATTrackingManager.requestTrackingAuthorization { _ in
+        }
+        // ad loaded
+        NotificationCenter.default.addObserver(forName: .nativeUpdate, object: nil, queue: .main) { [weak self] noti in
+            
+            if GADUtil.share.isADLimited {
+                self?.adView.ad = nil
+                return
+            }
+            
+            // native ad is being display.
+            if let ad = noti.object as? NativeADModel, self?.willApear == true {
+                
+                // view controller impression ad date betwieen 10s to show ad
+                if Date().timeIntervalSince1970 - (self?.adImpressionDate ?? Date(timeIntervalSinceNow: -11)).timeIntervalSince1970 > 10 {
+                    self?.adView.ad = ad.nativeAd
+                    self?.adImpressionDate = Date()
+                } else {
+                    SLog("[ad] 10s home 原生广告刷新或数据填充间隔.")
+                }
+            } else {
+                self?.adView.ad = nil
+            }
+        }
+        
+        NotificationCenter.default.addObserver(forName: .homeWillDisappear, object: nil, queue: .main) { [weak self] _ in
+            self?.willApear = false
+            GADUtil.share.close(.native)
+        }
+        
+        NotificationCenter.default.addObserver(forName: UIApplication.didEnterBackgroundNotification, object: nil, queue: .main) { [weak self] _ in
+            GADUtil.share.close(.native)
+            self?.willApear = false
+        }
+        
+        NotificationCenter.default.addObserver(forName: .homeWillappear, object: nil, queue: .main) { [weak self]_ in
+            self?.willApear = true
+            GADUtil.share.load(.interstitial)
+            GADUtil.share.load(.native)
         }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         layoutView()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.willApear = false
+        GADUtil.share.close(.native)
     }
     
     override func viewDidLayoutSubviews() {
@@ -95,7 +144,6 @@ class HomeVC: BaseVC {
     @IBAction func cleanHandle(segue: UIStoryboardSegue) {
         FirebaseUtil.logEvent(name: .cleanSuccess)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            self.layoutView()
             self.searchTextField.text = ""
             self.alert("Clean successfully.")
             FirebaseUtil.logEvent(name: .cleanAlert)
@@ -119,6 +167,10 @@ extension HomeVC {
     }
     
     func layoutView() {
+        willApear = true
+        GADUtil.share.load(.native)
+        GADUtil.share.load(.interstitial)
+        
         FirebaseUtil.logEvent(name: .homeShow)
 
         tabButton.setTitle("\(BrowseUtil.shared.items.count)", for: .normal)
@@ -210,4 +262,9 @@ extension HomeVC: UITextFieldDelegate {
         return true
     }
     
+}
+
+extension Notification.Name {
+    static let homeWillDisappear = Notification.Name(rawValue: "homeWillDisappear")
+    static let homeWillappear = Notification.Name(rawValue: "homeWillappear")
 }

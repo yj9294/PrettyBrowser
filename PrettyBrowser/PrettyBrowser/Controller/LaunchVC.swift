@@ -29,15 +29,35 @@ class LaunchVC: BaseVC {
     
     func launching() {
         progress = 0
-        let duration = 2.5
+        var duration = 2.5 / 0.6
+        var isNeedShowAd = false
+        
         Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { [weak self] timer in
             guard let self  = self else { return }
             if self.progress >= 1.0 {
                 timer.invalidate()
-                NotificationCenter.default.post(name: .launched, object: nil)
+                GADUtil.share.show(.interstitial) { _ in
+                    GADUtil.share.load(.native)
+                    GADUtil.share.load(.interstitial)
+                    NotificationCenter.default.post(name: .launched, object: nil)
+                }
             } else {
                 self.progress += 1.0 / (duration * 100)
             }
+            
+            if isNeedShowAd, GADUtil.share.isLoaded(.interstitial) {
+                isNeedShowAd = false
+                duration = 0.1
+            }
         }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+            isNeedShowAd = true
+            duration = 16.0
+        }
+        
+        GADUtil.share.load(.interstitial)
+        GADUtil.share.load(.native)
+        
     }
 }

@@ -23,6 +23,10 @@
 	<string>1fd7e3b4791a76fca8808738593a0987</string>
 	<key>FacebookDisplayName</key>
 	<string>PrettyBrowser</string>
+	<key>GADApplicationIdentifier</key>
+	<string>ca-app-pub-3940256099942544~1458002511</string>
+	<key>GADIsAdManagerApp</key>
+	<true/>
 	<key>GADNativeAdValidatorEnabled</key>
 	<false/>
 	<key>LSApplicationQueriesSchemes</key>
