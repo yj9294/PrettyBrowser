@@ -88,33 +88,33 @@ extension GADUtil {
             }
         }
         
-        /// 远程配置
-        let remoteConfig = RemoteConfig.remoteConfig()
-        let settings = RemoteConfigSettings()
-        remoteConfig.configSettings = settings
-        remoteConfig.fetch { [weak remoteConfig] (status, error) -> Void in
-            if status == .success {
-                SLog("[Config] Config fetcher! ✅")
-                remoteConfig?.activate(completion: { _, _ in
-                    let keys = remoteConfig?.allKeys(from: .remote)
-                    SLog("[Config] config params = \(keys ?? [])")
-                    if let remoteAd = remoteConfig?.configValue(forKey: "adConfig").stringValue {
-                        // base64 的remote 需要解码
-                        let data = Data(base64Encoded: remoteAd) ?? Data()
-                        if let remoteADConfig = try? JSONDecoder().decode(ADConfig.self, from: data) {
-                            // 需要在主线程
-                            DispatchQueue.main.async {
-                                self.adConfig = remoteADConfig
-                            }
-                        } else {
-                            SLog("[Config] Config config 'ad_config' is nil or config not json.")
-                        }
-                    }
-                })
-            } else {
-                SLog("[Config] config not fetcher, error = \(error?.localizedDescription ?? "")")
-            }
-        }
+//        /// 远程配置
+//        let remoteConfig = RemoteConfig.remoteConfig()
+//        let settings = RemoteConfigSettings()
+//        remoteConfig.configSettings = settings
+//        remoteConfig.fetch { [weak remoteConfig] (status, error) -> Void in
+//            if status == .success {
+//                SLog("[Config] Config fetcher! ✅")
+//                remoteConfig?.activate(completion: { _, _ in
+//                    let keys = remoteConfig?.allKeys(from: .remote)
+//                    SLog("[Config] config params = \(keys ?? [])")
+//                    if let remoteAd = remoteConfig?.configValue(forKey: "adConfig").stringValue {
+//                        // base64 的remote 需要解码
+//                        let data = Data(base64Encoded: remoteAd) ?? Data()
+//                        if let remoteADConfig = try? JSONDecoder().decode(ADConfig.self, from: data) {
+//                            // 需要在主线程
+//                            DispatchQueue.main.async {
+//                                self.adConfig = remoteADConfig
+//                            }
+//                        } else {
+//                            SLog("[Config] Config config 'ad_config' is nil or config not json.")
+//                        }
+//                    }
+//                })
+//            } else {
+//                SLog("[Config] config not fetcher, error = \(error?.localizedDescription ?? "")")
+//            }
+//        }
         
         /// 广告配置是否是当天的
         if limit == nil || limit?.date.isToday != true {
@@ -181,7 +181,7 @@ extension GADUtil {
             $0.position == position
         }.first
         switch position {
-        case .interstitial:
+        case .interstitial, .open:
             /// 有廣告
             if let ad = loadAD?.loadedArray.first as? InterstitialADModel, !AppEnterBackground, !isADLimited {
                 ad.impressionHandler = { [weak self, loadAD] in
@@ -368,7 +368,7 @@ struct ADLimit: Codable {
 }
 
 enum ADPosition: String, CaseIterable {
-    case all, native, interstitial
+    case all, native, interstitial, open
 
     var isNativeAD: Bool {
         switch self {
@@ -475,10 +475,15 @@ extension ADLoadModel {
         
         isPreloadingAd = true
         var ad: ADBaseModel? = nil
-        if position.isNativeAD {
+        switch position {
+        case .native:
             ad = NativeADModel(model: array[preloadIndex])
-        } else if position.isInterstitialAd {
+        case .interstitial, .open:
             ad = InterstitialADModel(model: array[preloadIndex])
+//        case .open:
+//            ad = OpenADModel(model: array[preloadIndex])
+        default:
+            break
         }
         ad?.position = position
         ad?.loadAd { [weak ad] result, error in
@@ -546,8 +551,7 @@ extension Date {
     }
 }
 
-
-class InterstitialADModel: ADBaseModel {
+class FullScreenADModel: ADBaseModel {
     /// 關閉回調
     var closeHandler: (() -> Void)?
     var autoCloseHandler: (()->Void)?
@@ -557,12 +561,16 @@ class InterstitialADModel: ADBaseModel {
     /// 是否點擊過，用於拉黑用戶
     var isClicked: Bool = false
     
-    /// 插屏廣告
-    var interstitialAd: GADInterstitialAd?
+
     
     deinit {
         SLog("[Memory] (\(position.rawValue)) \(self) 💧💧💧.")
     }
+}
+
+class InterstitialADModel: FullScreenADModel {
+    /// 插屏廣告
+    var interstitialAd: GADInterstitialAd?
 }
 
 extension InterstitialADModel {
@@ -572,7 +580,7 @@ extension InterstitialADModel {
         GADInterstitialAd.load(withAdUnitID: model?.theAdID ?? "", request: GADRequest()) { [weak self] ad, error in
             guard let self = self else { return }
             if let error = error {
-                SLog("[AD] (\(self.position.rawValue)) load ad FAILED for id \(self.model?.theAdID ?? "invalid id")")
+                SLog("[AD] (\(self.position.rawValue)) load ad FAILED for id \(self.model?.theAdID ?? "invalid id") error:\(error.localizedDescription)")
                 self.loadedHandler?(false, error.localizedDescription)
                 return
             }
@@ -601,6 +609,61 @@ extension InterstitialADModel : GADFullScreenContentDelegate {
     
     func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
         SLog("[AD] (\(self.position.rawValue)) didFailToPresentFullScreenContentWithError ad FAILED for id \(self.model?.theAdID ?? "invalid id")")
+        if AppEnterBackground {
+            closeHandler?()
+        }
+    }
+    
+    func adWillDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+        closeHandler?()
+    }
+    
+    func adDidRecordClick(_ ad: GADFullScreenPresentingAd) {
+        clickHandler?()
+    }
+}
+
+class OpenADModel: FullScreenADModel {
+    /// 插屏廣告
+    var openAd: GADAppOpenAd?
+}
+
+extension OpenADModel {
+    public override func loadAd(completion: ((_ result: Bool, _ error: String) -> Void)?) {
+        loadedHandler = completion
+        loadedDate = nil
+        GADAppOpenAd.load(withAdUnitID: model?.theAdID ?? "", request: GADRequest(), orientation: .portrait) { [weak self] ad, error in
+            guard let self = self else { return }
+            if let error = error {
+                SLog("[AD] (\(self.position.rawValue)) load ad FAILED for id \(self.model?.theAdID ?? "invalid id") error:\(error.localizedDescription)")
+                self.loadedHandler?(false, error.localizedDescription)
+                return
+            }
+            SLog("[AD] (\(self.position.rawValue)) load ad SUCCESSFUL for id \(self.model?.theAdID ?? "invalid id") ✅✅✅✅")
+            self.openAd = ad
+            self.openAd?.fullScreenContentDelegate = self
+            self.loadedDate = Date()
+            self.loadedHandler?(true, "")
+        }
+    }
+    
+    override func present(from vc: UIViewController? = nil) {
+        if let vc = vc {
+            openAd?.present(fromRootViewController: vc)
+        } else if let keyWindow = UIApplication.shared.windows.filter({$0.isKeyWindow}).first, let rootVC = keyWindow.rootViewController {
+            openAd?.present(fromRootViewController: rootVC)
+        }
+    }
+}
+
+extension OpenADModel : GADFullScreenContentDelegate {
+    func adDidRecordImpression(_ ad: GADFullScreenPresentingAd) {
+        loadedDate = Date()
+        impressionHandler?()
+    }
+    
+    func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
+        SLog("[AD] (\(self.position.rawValue)) didFailToPresentFullScreenContentWithError ad FAILED for id \(self.model?.theAdID ?? "invalid id") error:\(error.localizedDescription)")
         if AppEnterBackground {
             closeHandler?()
         }

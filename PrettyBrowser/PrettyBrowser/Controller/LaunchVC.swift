@@ -36,16 +36,16 @@ class LaunchVC: BaseVC {
             guard let self  = self else { return }
             if self.progress >= 1.0 {
                 timer.invalidate()
-                GADUtil.share.show(.interstitial) { _ in
+                GADUtil.share.show(.open) { _ in
                     GADUtil.share.load(.native)
-                    GADUtil.share.load(.interstitial)
+                    GADUtil.share.load(.open)
                     NotificationCenter.default.post(name: .launched, object: nil)
                 }
             } else {
                 self.progress += 1.0 / (duration * 100)
             }
             
-            if isNeedShowAd, GADUtil.share.isLoaded(.interstitial) {
+            if isNeedShowAd, GADUtil.share.isLoaded(.open) {
                 isNeedShowAd = false
                 duration = 0.1
             }
@@ -56,6 +56,7 @@ class LaunchVC: BaseVC {
             duration = 16.0
         }
         
+        GADUtil.share.load(.open)
         GADUtil.share.load(.interstitial)
         GADUtil.share.load(.native)
         
